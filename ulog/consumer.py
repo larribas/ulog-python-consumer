@@ -64,6 +64,10 @@ class Consumer:
 
 
   def subscribe_to(self, stream, partition, _from=None, refresh_period=2):
+    """ 
+    subscribe_to returns a generator that yields all (old and new) events from the provided stream partition.
+    If _from is not specified, it starts from the oldest event in the stream partition
+    """
     # Set (from, to) parameters depending on their availability
     params = {"from": _from} if _from is not None else {}
 
